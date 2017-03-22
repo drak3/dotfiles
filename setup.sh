@@ -14,3 +14,7 @@ function plain_link {
 }
 
 dot_link zshrc
+dot_link zshrc.local
+
+dot_link vimrc
+
