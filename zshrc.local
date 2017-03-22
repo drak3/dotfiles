@@ -1,0 +1,23 @@
+#Double tap ESC -> prepend sudo to current line
+#If line is empty sudo is prepended to last command
+
+sudo-command-line() {
+    [[ -z $BUFFER ]] && zle up-history #if buffer is empty load last command to current line
+    [[ $BUFFER != sudo\ * ]] && LBUFFER="sudo $LBUFFER"
+}
+
+zle -N sudo-command-line
+
+#bind to ESC ESC
+bindkey "\e\e" sudo-command-line
+
+alias off="systemctl poweroff"
+alias bc="bc -l" #load math library when using bc
+
+
+export GOPATH=/home/drak3/coding/go
+export DIARY=$HOME/owncloud/diary
+export PATH=/home/drak3/bin:$GOPATH/bin:$PATH
+
+export PI=$(echo "scale=10; 4*a(1)" | bc)
+export E=$(echo "scale=10;e(1)" | bc)
